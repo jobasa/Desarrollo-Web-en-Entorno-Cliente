@@ -16,5 +16,6 @@ function closestEnemy(charPosition,... enemiesPos){
 }
 
 console.log( closestEnemy( [0,0], [5,6], [4,8], [-1,4] ) );
-console.log( closestEnemy( [0,0], ))
+console.log( closestEnemy( [0,0], ));
+ 
 

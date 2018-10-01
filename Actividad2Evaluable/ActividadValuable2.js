@@ -10,3 +10,10 @@ class articuloscientificos {
 
 
 }
+
+class articulosderevista extends articuloscientificos {
+    constructor( editorial, calidadrevista ){
+        this.editorial = editorial;
+        this.calidadrevista = calidadrevista;
+    }
+}

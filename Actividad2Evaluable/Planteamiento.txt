@@ -1,0 +1,17 @@
+Articulos científicos:
+	- Título
+	- Autor
+	- Numpaginas
+	- Añopublicacion
+	- Nummenciones
+		· Artículos de revista:
+			- Título
+			- Editorial
+			- Calidad revista
+		· Artículos en conferencia: 
+			- Libroconferencia: ->nombre
+			- Lugarcelebracion
+Patentes científicas:
+	- Autores	
+	- Año publicación
+	- Año vencimiento patente

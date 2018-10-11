@@ -1,6 +1,6 @@
-const rl = require('readline-sync');
-let edad = rl.question( 'Introduce tu edad: ' );
-console.log('Tu edad es ' +edad);
+const readline = require('readline-sync');
+//let edad = rl.question( 'Introduce tu edad: ' );
+//console.log('Tu edad es ' +edad);
 
 //Clase de articulos cientififcos
 class articuloscientificos {
@@ -15,7 +15,6 @@ class articuloscientificos {
 
 
 }
-
 //Clase de patentes cientificas
 class patentescientificas {
     constructor (author, anyodepublicacion, anyovenciminetopatente){
@@ -47,21 +46,39 @@ class articulosconferencia extends articuloscientificos {
         this.lugarcelebracion = lugarcelebracion;
     }
 }
+let salir = false;
+// ! operdaor de negacion
+while(!salir){
+    console.log('Bienvenido al sistema de gestión de la universidad');
+    console.log('1) Introducir un libro\n');
+    console.log('2) Introducir articulo\n');
+    console.log('3) Añadir autor\n');
+    console.log('4) Salir del sistema');
+    let opcion = readline.questionInt('Por favor, seleccione una de estas opciones: ');
 
-while(true){
+    if(opcion===1){
+        //Dar de alta un libro
+        let =readline.question('Por favor introduce una matrícula: ');
+        let marca=readline.question('Por favor introduce una marca: ');
+        let modelo=readline.question('Por favor introduce un modelo: ');
+        let color=readline.question('Por favor introduce un color: ');
+        let km=readline.questionFloat('Por favor introduce el num. de km: ');
+        let newCar= new Coche(matricula, marca, modelo, color, km);
+        listaCoches.push(newCar);
+        console.log(listaCoches);
+    } else if(opcion===2){
 
-    let opcion = rl.question('Introduce la accion a realizar:\n' + 
-        '1) Introducir libro\n' + 
-        '2) Introducir articulo\n' + 
-        '3) AÃ±adir autor\n' +
-        '4) Salir');
-    if(opcion==='1'){
-        
-    } else if(opcion==='2'){
-
-    } else if(opcion==='3'){
-
-    }else if(opcion==='4'){
-
+    } else if(opcion===3){
+        //Añadir un autor
+        let matricula=readline.question('Por favor introduce una matrícula: ');
+        let marca=readline.question('Por favor introduce una marca: ');
+        let modelo=readline.question('Por favor introduce un modelo: ');
+        let color=readline.question('Por favor introduce un color: ');
+        let km=readline.questionFloat('Por favor introduce el num. de km: ');
+        let newCar= new Coche(matricula, marca, modelo, color, km);
+        listaCoches.push(newCar);
+        console.log(listaCoches);
+    }else if(opcion===4){
+        salir=true;
     }
 }

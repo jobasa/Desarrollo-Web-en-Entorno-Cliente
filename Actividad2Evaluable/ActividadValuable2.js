@@ -32,6 +32,16 @@
         }
     }
 
+    //clase autor
+    class autor{
+        constructor(nombre, apellidos, dni, correoelectronico){
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.dni = dni;
+            this.correoelectronico = correoelectronico;
+        }
+    }
+
     class articulosderevista extends articuloscientificos {
         constructor( title, author, numpaginas, anyodepublicacion, nummenciones, editorial, calidadrevista ){
             this.title = title;
@@ -56,6 +66,7 @@
     }
 
     let listaLibro = [ ];
+    let listaAutor = [ ];
     // Es un FLAG
     let salir = false;
     // ! operdaor de negacion
@@ -91,7 +102,14 @@
                 console.log(listaLibros);
             }
         }else if(opcion===3){
-            //Añadir un coche
+            //Añadir autor
+            let nombre=readline.question('Por favor introduce un nombre: ');
+            let apellidos=readline.question('Por favor introduce un apellido: ');
+            let dni=readline.question('Por favor introduce un DNI: ');
+            let correoelectronico=readline.question('Por favor introduce un correo electronico: ')
+            let newAutor= new autor(nombre,apellidos, dni, correoelectronico);
+            listaAutor.push(newAutor);
+            console.log(listaAutor);
 
         }else if(opcion===4){
             salir=true;

@@ -3,6 +3,10 @@
 
     //Clase Publicaciones
     class publicaciones{
+            /** 
+            * @param {String} titulo 
+            * @param  {Array} autores 
+            */
         constructor(titulo,...autores){
             this.titulo = titulo;
             this.autores = autores;
@@ -12,6 +16,12 @@
 
     //clase autor
     class autor{
+            /** 
+            * @param {String} nombre 
+            * @param {String} apellidos 
+            * @param {Integer} dni
+            * @param {string} correoelectronico
+            */
         constructor(nombre, apellidos, dni, correoelectronico){
             this.nombre = nombre;
             this.apellidos = apellidos;
@@ -22,6 +32,13 @@
 
     //clase articulos cientificos
     class articulosCientificos extends publicaciones {
+            /** 
+             * @param {String} titulo 
+             * @param {Array} autores 
+             * @param {String} numPaginas 
+             * @param {Integer} anyoPublicacion 
+             * @param {Integer} numMenciones 
+             */
         constructor(titulo,autores,numPaginas,anyoPublicacion,numMenciones){
             super(titulo,...autores);
             this.numPaginas = numPaginas;
@@ -32,6 +49,15 @@
 
     //clase articulos de revista
     class articulosRevista extends articulosCientificos {
+            /**
+            * @param {String} titulo 
+            * @param {Array} autores 
+            * @param {String} numPaginas 
+            * @param {Integer} anyoPublicacion 
+            * @param {Integer} numMenciones 
+            * @param {String} editorial 
+            * @param {Integer} factorImpact 
+            */
         constructor(titulo,autores,numPaginas,anyoPublicacion,numMenciones,editorial,factorImpact){
             super(titulo,autores,numPaginas,anyoPublicacion,numMenciones);
             this.editorial = editorial;
@@ -41,6 +67,15 @@
 
     //clase articulos de conferencia
     class articulosConferencia extends articulosCientificos {
+               /**
+                * @param {String} titulo 
+                * @param {Array} autores 
+                * @param {String} numPaginas 
+                * @param {Integer} anyoPublicacion 
+                * @param {Integer} numMenciones 
+                * @param {String} nomConferencia 
+                * @param {String} lugarCelebracion 
+                */ 
         constructor(titulo,autores,numPaginas,anyoPublicacion,numMenciones,nomConferencia,lugarCelebracion){
             super(titulo,autores,numPaginas,anyoPublicacion,numMenciones);
             this.nomConferencia = nomConferencia;
@@ -48,14 +83,57 @@
         }
     }
 
+    //Clase patentes cientificas
+    class patenteCientifica extends publicaciones{
+           /** 
+            * @param {String} titulo 
+            * @param {Array} autores 
+            * @param {Integer} anyoPublicacion 
+            * @param {String} anyoVencimiento 
+            */ 
+           constructor(titulo,autores,anyoPublicacion,anyoVencimiento){
+                super(titulo,...autores);
+                this.anyoPublicacion = anyoPublicacion;
+                this.anyoVencimiento = anyoVencimiento
+           }
+    }  
+
 
     //Arrays
     let listaAutor = [ ];
     let listaConferencia = [ ];
     let listaRevista = [ ];
+    let listaPatentes = [ ];
     // Es un FLAG
     let salir = false;
     // ! operdaor de negacion
+
+    //Busquedas
+    var buscarAutor = " ";
+    var buscarAnyoPublicacion = " ";
+
+    function busqueda(elemento){
+
+        if (buscarAutor.length > 0 && buscarAnyoPublicacion.length > 0){
+            if(elemento.autores == buscarAutor && elemento.anyoPublicacion == buscarAnyoPublicacion){
+                return elemento;
+            }
+        }else if (buscarAutor.length > 0){
+            if(elemento.autores == buscarAutor){
+                return elemento;
+            }
+        }else if (buscarAnyoPublicacion.length > 0){
+            if(elemento.anyoPublicacion == buscarAnyoPublicacion){
+                return elemento;
+            }
+        }else {
+            console.log('Error, los parametros introducidos no son validos');  
+        }  
+    }
+
+
+
+
     while(!salir){
         console.log('\nBienvenido al sistema de producción cientifica\n');
         console.log('1) Dar de alta\n');
@@ -124,6 +202,22 @@
                 console.log(listaConferencia);
                 console.log('Registro realizado con exito');
                 }
+                if(opcion == 3){
+                    //Patentes
+                    let titulo = readline.question('Por favor introduce un titulo: ');
+                    let numAutores = readline.question('¿Cuantos autores tiene?');
+                    let autor = [ ];
+                    for(let i = 0; i < numAutores; i++){
+                        autor[i] = readline.question('Por favor introduce un autor: ');
+                    }
+                    let anyoPublicacion = readline.questionInt('Por favor introduce un anyo de publicacion: ');
+                    let anyoVencimiento = readline.question('Por favor introduce un anyo de vencimiento: ');
+                    let newPatente = new PatenteCientifica(titulo,autor, anyoPublicacion,anyoVencimiento);
+                    listaPatentes.push(newPatente);
+                    console.log(listaPatentes);
+                    console.log('Registro realizado con exito');
+
+                }
         }else if(opcion===2){
             //Dar de baja
             if(opcion === 2){
@@ -145,6 +239,57 @@
                             break;
                         }
                     }
+
+                }
+                //Articulos
+                if(opcion === 2){
+                    console.log('¿Que tipo de articulo quieres dar de baja?\n');
+                    console.log('1) Articulo de revista\n');
+                    console.log('2) Articulo de conferencia\n');
+                    console.log('3) Patentes cientificas\n');
+                    let opcion = readline.questionInt('Por favor selecciona una de estas opciones: ');
+                    
+                    //Articulo de revista
+                    if(opcion === 1){
+                        let opcion = readline.question('Introduce el titulo del articulo de revista: ');
+                        for(let i = 0; i < listaRevista.length; i++){
+                            let revista = listaRevista[i];
+                            if(revista.titulo === opcion){
+                                console.log(listaRevista);
+                                console.log('Articulo borrado con exito!');
+                                break;
+                            }  
+                        }
+                    }
+                    //Articulo de conferencia
+                    if(opcion === 2){
+                        let opcion = readline.question('Introduce el titulo del articulo de conferencia: ');
+                        for(let i = 0; i < listaConferencia.length; i++){
+                            let conferencia = listaConferencia[i];
+                            if(conferencia.titulo === opcion){
+                                listaConferencia.splice(i,1);
+                                console.log('Articulo borrado con exito!');
+                                break;
+                            }
+  
+                        }
+                    }
+                    //Patentes cientificas
+                    if(opcion === 3){
+                        let opcion = readline.question('Introduce el titulo de la patente: ');
+                        for(let i = 0; i < listaPatentes.length; i++){
+                            let patente = listaPatentes[i];
+                            if(patente.titulo === opcion){
+                                listaPatentes.splice(i,1);
+                                console.log(listaPatentes);
+                                console.log('Patente borrada con exito!');
+                                break;
+                            }
+
+                        }
+
+                }
+                
 
                 }
             }

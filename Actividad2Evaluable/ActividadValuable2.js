@@ -136,6 +136,7 @@
             let opcion = readline.questionInt('Por favor selecciona una de estas opciones: ');
 
             if(opcion===1){
+                //Autores
                 if(opcion === 1){
                     console.log('¿Que quieres modificar?\n');
                     console.log('1) Nombre');
@@ -165,6 +166,13 @@
                             let autor = listaAutor[i];
                             if(autor.apellidos === opcion){
                                 let nuevoApellido = readline.question('Introduce un nuevo apellido: ');
+                                autor.apellidos= nuevoApellido;
+                                console.log(listaAutor);
+                                console.log('Apellido modificado con exito!');
+                                break;
+                            }else{
+                                console.log('Nose se ha encontado el autor');
+                                salir = true;
                             }
                         }
                     }
@@ -172,9 +180,13 @@
                 }
 
             }
+            if(opcion===2){
+             //Articulos cientificos
+            }
     
 
         }else if(opcion===4){
+            console.log('Se ha salido con exito!');
             salir=true;
         }
     }

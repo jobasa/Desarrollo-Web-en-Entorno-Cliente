@@ -126,7 +126,29 @@
                 }
         }else if(opcion===2){
             //Dar de baja
+            if(opcion === 2){
+                console.log('¿Que quieres dar de baja?\n');
+                console.log('1) Autores');
+                console.log('2) Articulos cientificos');
+                console.log('3) Patentes cientificas');
+                let opcion = readline.questionInt('Por favor seleccione una de estas opciones: ');
+                
+                //Autores
+                if(opcion === 1){
+                    let opcion = readline.question('Introduce el nombre del autor: ');
+                    for(let i = 0; i < listaAutor.length; i++){
+                        let autor = listaAutor[i];
+                        if(autor.nombre === opcion){
+                            listaAutor.splice(i,1);
+                            console.log(listaAutor);
+                            console.log('Autor eliminado con exito!');
+                            break;
+                        }
+                    }
 
+                }
+            }
+            
         }else if(opcion===3){
             //Modificar
             console.log('¿Que quieres modificar?\n');
@@ -136,7 +158,7 @@
             let opcion = readline.questionInt('Por favor selecciona una de estas opciones: ');
 
             if(opcion===1){
-                //Autores
+                //Modificar Autores
                 if(opcion === 1){
                     console.log('¿Que quieres modificar?\n');
                     console.log('1) Nombre');
@@ -179,9 +201,19 @@
 
                 }
 
+                
+
             }
+            
+            //Modificar Articulos cientificos
             if(opcion===2){
-             //Articulos cientificos
+                    console.log('¿Que tipo de articulo desea modificar?\n');
+                    console.log('1) Articulo de revista\n');
+                    console.log('2) Articulo en conferencia\n');
+                    let opcion = readline.questionInt('Por favor selecciona una de estas opciones: ');
+
+                //Modificar revista
+
             }
     
 

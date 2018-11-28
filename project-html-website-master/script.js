@@ -8,3 +8,5 @@ console.log(link);
 for (links of link)
 console.log(links.hostname);
 
+let imagen = document.getElementsByTagName("img");
+console.log(imagen);

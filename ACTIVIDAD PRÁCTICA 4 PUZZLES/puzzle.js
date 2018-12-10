@@ -26,19 +26,23 @@ function getNumberPiecesFromUser() {
     
 }
 
-
+let num_piezas = 2;
 function  getMaxScore(num_piezas) {
  let resultado = num_piezas * 2;
  return resultado;
 }
 
 function getScore() {
+    let score = document.body.children[1].innerText;
+    score = score.split("Score: ");
+    console.log(score);
+
     
 }
 
-let texto = document.
-console.log(texto);
 
 getNumberPiecesFromUser();
-getMaxScore(2);
+
+getScore();
+
 

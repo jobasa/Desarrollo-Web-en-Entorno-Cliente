@@ -34,8 +34,8 @@ function  getMaxScore(num_piezas) {
 
 function getScore() {
     let score = document.body.children[1].innerText;
-    score = score.split("Score: ");
-    console.log(score);
+    score = score.split(' ');
+    return parseInt(score[1]);
 
     
 }

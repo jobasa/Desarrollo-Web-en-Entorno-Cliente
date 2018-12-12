@@ -33,16 +33,19 @@ function  getMaxScore(num_piezas) {
 }
 
 function getScore() {
-    let score = document.body.children[1].innerText;
-    score = score.split(' ');
-    return parseInt(score[1]);
+    let score = document.getElementById("score").textContent;
+    score = score.split('Score:');
+    parseInt(score[1]);
+    return score;
+    
+}
 
+function updateScore(score) {
     
 }
 
 
 getNumberPiecesFromUser();
-
-getScore();
+console.log(getScore());
 
 

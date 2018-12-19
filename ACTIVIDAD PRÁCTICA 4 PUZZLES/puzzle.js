@@ -51,7 +51,15 @@ function decreaseScore(numero) {
     let puntuacion = getScore();
     let decrementoScore = puntuacion - numero;
     updateScore(decrementoScore);
-    
+
+}
+
+function getNewSizes(width, height) {
+    if (width > height) {
+        newWidth = (width / height) * 200;
+    } else if (height > width) {
+        newHeight = (200 * height) / width;
+    }
 }
 
 

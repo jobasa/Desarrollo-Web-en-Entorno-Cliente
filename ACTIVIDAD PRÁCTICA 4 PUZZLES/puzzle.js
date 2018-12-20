@@ -62,6 +62,14 @@ function getNewSizes(width, height) {
     }
 }
 
+ObjetosArray = ["0,1,2,3,4"];
+
+function shuffle(ObjetosArray) {
+    for (let i = 0; i < ObjetosArray.length; i++) {
+        const element = ObjetosArray[i];
+        
+    }
+}
 
 getNumberPiecesFromUser();
 console.log(getScore());

@@ -62,15 +62,19 @@ function getNewSizes(width, height) {
     }
 }
 
-ObjetosArray = ["0,1,2,3,4"];
+array = [0,1,2,3,4];
 
-function shuffle(ObjetosArray) {
-    for (let i = 0; i < ObjetosArray.length; i++) {
-        const element = ObjetosArray[i];
-        
+function shuffle(array) {
+    for (let i = array.length; i > 0; i--) {
+        let random = Math.floor(Math.random() * i);
+        let aux = array[i];
+        array[i] = array[random];
+        array[random] = aux;
     }
+    return array;
 }
 
 getNumberPiecesFromUser();
 console.log(getScore());
-console.log(decreaseScore(1));
+/*console.log(decreaseScore(1));*/
+console.log(shuffle(array));

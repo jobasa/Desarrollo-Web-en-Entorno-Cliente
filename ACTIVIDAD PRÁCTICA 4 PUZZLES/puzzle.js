@@ -65,13 +65,25 @@ function getNewSizes(width, height) {
 array = [0,1,2,3,4];
 
 function shuffle(array) {
-    for (let i = array.length; i > 0; i--) {
+    for (let i = array.length-1; i > 0; i--) {
         let random = Math.floor(Math.random() * i);
         let aux = array[i];
         array[i] = array[random];
         array[random] = aux;
     }
     return array;
+}
+
+function pieceNumberToRowsColumns(numPiezas, piezas) {
+    /*Array con las posiciones */
+    let posicion = [];
+    /*La raiz cuadrada del numero que te pasan*/
+    let dimension = Math.sqrt(piezas);
+
+    let fila = Math.floor(numPiezas / dimension);
+    let columna = numPiezas % dimension;
+    
+    
 }
 
 getNumberPiecesFromUser();

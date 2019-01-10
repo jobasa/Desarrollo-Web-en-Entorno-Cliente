@@ -78,7 +78,7 @@ function shuffle(array) {
 function pieceNumberToRowsColumns(numPiezas, piezas) {
     /*Array con las posiciones */
     let posicion = [];
-    /*La raiz cuadrada del numero que te pasan*/
+    /*La raiz cuadrada del número que te pasan*/
     let dimension = Math.sqrt(piezas);
 
     let fila = Math.floor(numPiezas / dimension);
@@ -90,13 +90,34 @@ function pieceNumberToRowsColumns(numPiezas, piezas) {
     return posicion;
 }
 
-function createPuzzleLayout(totalPiezas, anchuraImg, alturaImg, direccionImg) {
-    for (let index = 0; index < array.length; index++) {
-        /* creacion de fila */
+function createPuzzleLayout(totalPiezas, anchuraPuzzle, alturaPuzzle, direccionPuzzle) {
+    /* Raiz cuadrada del número que se introducirá */
+    let dimension = Math.sqrt(totalPiezas);
+    /* Creación de una tabla */
+    let tabla = document.createElement('table');
+    tabla.setAttribute("id", "tablero");
+    /* Situar la tabla en el body */
+    let posicionTabla = document.body.lastChild.previousElementSibling.previousElementSibling;
+
+
+    let contador = 0;
+
+    for (let i = 0; i < dimension - 1; i++) {
+        /* creación de fila */
         let tr = document.createElement('tr');
-        for (let index = 0; index < array.length; index++) {
-            /* Creacion de columna*/
+        tabla.appendChild(tr);
+        let fila = tabla.lastElementChild;
+
+        for (let x = 0; x < dimension; x++) {
+            /* Creación de columna*/
             let td = document.createElement('td');
+            td.style = 'border: 3px solid black;';
+            td.width = width / dimension;
+            td.height = height / dimension;
+            td.style.backgroundImage = 'url(' + direccionPuzzledirection + ')';
+            td.setAttribute('id', 'piece' + contador);
+            contador++;
+            tr.appendChild(td);
 
         }
 

@@ -62,10 +62,11 @@ function getNewSizes(width, height) {
     }
 }
 
-array = [0,1,2,3,4];
+array = [0, 1, 2, 3, 4];
 
 function shuffle(array) {
-    for (let i = array.length-1; i > 0; i--) {
+    /* Barajar los elementos de un array */
+    for (let i = array.length - 1; i > 0; i--) {
         let random = Math.floor(Math.random() * i);
         let aux = array[i];
         array[i] = array[random];
@@ -82,8 +83,24 @@ function pieceNumberToRowsColumns(numPiezas, piezas) {
 
     let fila = Math.floor(numPiezas / dimension);
     let columna = numPiezas % dimension;
-    
-    
+
+    posicion.push(fila);
+    posicion.push(columna);
+
+    return posicion;
+}
+
+function createPuzzleLayout(totalPiezas, anchuraImg, alturaImg, direccionImg) {
+    for (let index = 0; index < array.length; index++) {
+        /* creacion de fila */
+        let tr = document.createElement('tr');
+        for (let index = 0; index < array.length; index++) {
+            /* Creacion de columna*/
+            let td = document.createElement('td');
+
+        }
+
+    }
 }
 
 getNumberPiecesFromUser();

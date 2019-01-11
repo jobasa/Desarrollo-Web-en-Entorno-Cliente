@@ -111,10 +111,11 @@ function createPuzzleLayout(totalPiezas, anchuraPuzzle, alturaPuzzle, direccionP
         for (let x = 0; x < dimension; x++) {
             /* Creación de columna*/
             let td = document.createElement('td');
+
             td.style = 'border: 3px solid black;';
-            td.width = width / dimension;
-            td.height = height / dimension;
-            td.style.backgroundImage = 'url(' + direccionPuzzledirection + ')';
+            td.width = anchuraPuzzle / dimension;
+            td.height = alturaPuzzle / dimension;
+            td.style.backgroundImage = 'url(' + direccionPuzzle + ')';
             td.setAttribute('id', 'piece' + contador);
             contador++;
             tr.appendChild(td);
@@ -124,7 +125,24 @@ function createPuzzleLayout(totalPiezas, anchuraPuzzle, alturaPuzzle, direccionP
     }
 }
 
+function pieceToOffset(pieza, anchura, altura, numeroPiezas) {
+    let arraypiezas = [];
+    let posicion = pieceNumberToRowsColumns(pieza, numeroPiezas);
+    /* Devuelve la anchura de la pieza */
+    let anchuraPieza = anchura / Math.sqrt(numeroPiezas);
+    /* Devuelve la altura de la pieza */
+    let alturaPieza = altura / Math.sqrt(numeroPiezas);
+
+    /* Poner el resultado en el arrayPiezas */
+    arraypiezas.push(anchuraPieza * posicion[0] * (-1));
+    arraypiezas.push(alturaPieza * posicion[1] * (-1));
+
+    return arraypiezas;
+}
+
+
 getNumberPiecesFromUser();
 console.log(getScore());
 /*console.log(decreaseScore(1));*/
 console.log(shuffle(array));
+/*createPuzzleLayout(9, 958, 1277, 'cat.jpg');*/

@@ -163,6 +163,93 @@ function drawContentPuzzle(arrayDesplazamientos) {
     }
 }
 
+function checkIfSolution(solucion, estadoActual) {
+    for (let i = 0; i < solucion.length; i++) {
+        if (solucion[i] !== estadoActual[i]) {
+            return false;
+        }
+
+    }
+    return true;
+}
+
+function initGame(imageURL, numberOfPieces) {
+    let img = new Image();
+    img.addEventListener('load', function () {
+        gameLogic(img, numberOfPieces);
+    });
+    img.src = imageURL;
+}
+
+function gameLogic(image, num_piezas) {
+    updateScore(getMaxScore(num_piezas));
+    let altura = image.height;
+    let anchura = image.width;
+    let imagen = image.src.split('/');
+    let ultimaPosicionImg = imagen[imagen.length - 1];
+
+    let movimientos = createReferenceSolution(anchura, altura, num_piezas);
+    shuffle(movimientos);
+    createPuzzleLayout(num_piezas, anchura, altura, ultimaPosicionImg);
+    drawContentPuzzle(movimientos);
+
+    let columnas = document.getElementsByTagName('td');
+
+    arraySolucion = [];
+    for (let i = 0; i < columnas.length; i++) {
+        arraySolucion.push(createReferenceSolution(anchura, altura, num_piezas)[i]);
+
+    }
+
+
+    let arrayClick = [];
+    let arrayPosicionActualizada = [];
+
+    for (let i = 0; i < columnas.length; i++) {
+        columnas[i].addEventListener('click', function testear() {
+            if (arrayClick.length == 1) {
+                arrayClick.push(columnas[i]);
+                let posicion1 = arrayClick[0].style.backgroundPosition;
+                arrayClick[0].style.backgroundPosition = arrayClick[1].style.backgroundPosition;
+                arrayClick[1].style.backgroundPosition = posicion1;
+                arrayClick[0].style.borderColor = 'black';
+                arrayClick[1].style.borderColor = 'black';
+
+                updateScore(getScore() - 1);
+                arrayClick = [];
+
+                let actualizado = document.getElementsByTagName('td');
+                for (let x = 0; x < actualizado.length; x++) {
+                    arrayPosicionActualizada.push(actualizado[x].style.backgroundPosition);
+
+                }
+
+                if (checkIfSolution(arraySolucion, arrayPosicionActualizada) == true) {
+                    arrayPosicionActualizada = [];
+                } else {
+                    console.log(arrayPosicionActualizada);
+                    console.log(arraySolucion);
+                    arrayPosicionActualizada = [];
+                }
+
+
+
+
+            } else if (columnas[i].style.borderColor == 'red') {
+                columnas[i].style.borderColor = 'black';
+            } else {
+                columnas[i].style.borderColor = 'red';
+                arrayClick.push(columnas[i]);
+                console.log(arrayClick);
+            }
+        })
+
+    }
+
+}
+
+initGame('cat.jpg', getNumberPiecesFromUser());
+
 getNumberPiecesFromUser();
 console.log(getScore());
 /*console.log(decreaseScore(1));*/

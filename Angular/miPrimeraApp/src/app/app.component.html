@@ -1,0 +1,18 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<header>
+  <h1>Bienvenidos a la tarjeta de presentación online!</h1>
+</header>
+<section>
+  <div class="input_area">
+    Nombre: <input class="input_text" />
+  </div>
+  <img class="avatar" src="https://api.adorable.io/avatars/285/joan.png" />
+  <div class="input_area">
+    Trabajo: <input class="input_text" />
+  </div>
+</section>
+<footer>
+  <button (click)="saveEvent()" class="save_button">{{buttonText}}</button>
+</footer>
+
+<router-outlet></router-outlet>

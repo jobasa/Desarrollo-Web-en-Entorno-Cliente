@@ -8,13 +8,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title: string = 'Tarjeta de presentación';
   buttonText: string = 'Save';
+  isDisabled: boolean = false;
+  name: string = '';
+  position: string = '';
 
   saveEvent() {
     if (this.buttonText === 'Save') {
       this.buttonText = 'Edit';
+      this.isDisabled = true;
     } else {
       this.buttonText = 'Save';
+      this.isDisabled = false;
     }
   }
+
 
 }

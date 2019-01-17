@@ -4,16 +4,17 @@
 </header>
 <section>
   <div class="input_area">
-    Nombre: <input [(NgModel)]="name" [readonly]="isDisabled" class="input_text" />
+    Nombre: <input [(ngModel)]="name" [readonly]="isDisabled" class="input_text" />
   </div>
   <img class="avatar" src="https://api.adorable.io/avatars/285/joan.png" />
   <div class="input_area">
-    Trabajo: <input [(NgModel)]="position" [readonly]="isDisabled" id="algo" class="input_text" />
+    Trabajo: <input [(ngModel)]="position" [readonly]="isDisabled" id="algo" class="input_text" />
   </div>
 </section>
 <footer>
   <button (click)="saveEvent()" class="save_button">{{buttonText}}</button>
-  <button>Show information</button>
+  <button (click)="showInformation()">Show information</button>
+  <button (click)="resetInformation()">Reset</button>
 </footer>
 
 <router-outlet></router-outlet>

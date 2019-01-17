@@ -22,5 +22,13 @@ export class AppComponent {
     }
   }
 
+  showInformation() {
+    alert(this.name + ' ' + this.position);
+  }
 
+  resetInformation() {
+    this.name = '';
+    this.position = '';
+
+  }
 }

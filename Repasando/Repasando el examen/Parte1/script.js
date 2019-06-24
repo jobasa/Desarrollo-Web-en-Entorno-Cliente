@@ -82,20 +82,22 @@ function iniciarJuego() {
 
 
   crearTablero(5, 5);
-  
+
   //Donde se encuentra el aventurero al empezar el juego
   let pos_inicial_aventurero = casillaAventureroAleatoria(5, 5);
   dibujarAventurero(pos_inicial_aventurero);
+  
+  
 
   //Donde se encuentran los tesoros al empezar el juego
   let pos_inicial_tesoros= casillasTesorosAleatorias(5, 5,  pos_inicial_aventurero);
-    
+  
   // Recorrer el array "pos_inicial_tesoros" y para cada celda dibujo el tesoro
   for (let i = 0; i < pos_inicial_tesoros.length; i++) {
     dibujarTesoro(pos_inicial_tesoros[i]);
   }
 
 
-  console.log(casillaAventureroAleatoria(5, 6));
+  // console.log(casillaAventureroAleatoria(5, 6));
 
 }

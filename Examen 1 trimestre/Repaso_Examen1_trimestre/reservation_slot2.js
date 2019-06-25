@@ -74,29 +74,32 @@ class ReservationSlot {
 /* PON EL CÓDIGO DEL EJERCICIO 3 A PARTIR DE AQUÍ */
 
 function getMostPopularUser(ReservationSlotA) {
-    let popular = 0;
-    for (let i = 0; i < ReservationSlotA.length; i++) {
-        for (let x = i + 1; x < ReservationSlotA.length; x++) {
-            if (ReservationSlotA[i].autor == ReservationSlotA[x].autor) {
-                //   let author= parseInt(ReservationSlotA[i].autor)
-                //  popular = popular + (author + 1);
-
-                //return popular;
-                // if (ReservationSlotA[i].autor>0) {
-                //  return ReservationSlotA[i].autor;
-                //}
-
-
-            }
-
+    let reservasPorAutor = new Map();
+    for(let i=0;i<ReservationSlotA.length;i++){ 
+        let reserva = ReservationSlotA[i];
+        if(reservasPorAutor.has(reserva.autor)){
+            //El autor ha aparecido mas de una vez
+            let cuantasVecesAntes = reservasPorAutor.get( reserva.autor );
+            reservasPorAutor.set( reserva.autor, cuantasVecesAntes + 1 );
+        } else{
+            //La primera vez que aparece el autor
+            reservasPorAutor.set( reserva.autor, 1 );
         }
-
-
     }
+    let masPopular = undefined;
+    let numReservasMasPopular = 0;
+    for( let autor of reservasPorAutor.keys() ){
+        let numReservas = reservasPorAutor.get(autor);
+        if(numReservas> numReservasMasPopular){
+            numReservasMasPopular = numReservas;
+            masPopular = autor;
+        }
+    }
+    return masPopular;
 }
 
-let array = ["pepe", "rosa", "rosa", "diego", "roberto", "rosa"];
-console.log(getMostPopularUser(array));
+//let array = ["pepe", "rosa", "rosa", "diego", "roberto", "rosa"];
+//console.log(getMostPopularUser(array));
 
 
 /* FIN DEL EJERCICIO 3 */

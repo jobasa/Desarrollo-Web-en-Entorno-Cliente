@@ -153,20 +153,15 @@ if (document.body.hasChildNodes()) {
     /* PON AQUÍ EL CÓDIGO DEL EJERCICIO 5 */
     // Pon aquí el código para cambiar la tabla
     let table = document.getElementsByTagName("table");
-    let casillas = document.getElementsByTagName("tr");
-    console.log(casillas);
-    for (let i = 0; i < casillas.length; i++) {
-        for (let x = i+1; x < casillas.length; x++) {
-            if (casillas[i]==casillas[i]) {
-                casillas.style.background="red";
-            }
-            
-        }
+    let filas = document.body.firstElementChild.tBodies[0].rows;
 
-        
-    }
+    filas[2].style= 'background-color: red';
+    filas[6].style= 'background-color: red';
+    filas[10].style= 'background-color: red';
+
     
     //Pon aquí tu código para cambiar el código del párrafo, de forma que muestre el usuario que más reservas ha realizado
-
+    let parrafo = document.lastElementChild.previousElementSibling.textContent;
+    document.body.lastElementChild.previousElementSibling.textContent= parrafo + ' chinpokomon';
     /* FIN DEL EJERCICIO 5 */
 }

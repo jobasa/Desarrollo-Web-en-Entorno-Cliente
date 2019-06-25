@@ -52,7 +52,7 @@ class PedidoPizza {
             precioSalsa = 1.5;
         }
         precioFinal = precioFinal + precioSalsa;
-        
+
         for(let topping of this.toppings){
             let precioTopping = 0;
             switch(topping){
@@ -104,13 +104,13 @@ let pedido3 = new PedidoPizza(3, 'sfskf', 'sdfksdfks', 'thick', 'cheese', ['basi
 
 console.log(pedido1.getPrice());
 
-/*Dentro del archivo pizza.js, 
-fuera de la clase, crea una función que tome un array 
-de objetos de tipo pizza y calcule el topping más comúnmente 
+/*Dentro del archivo pizza.js,
+fuera de la clase, crea una función que tome un array
+de objetos de tipo pizza y calcule el topping más comúnmente
 empleado en las pizzas. Emplea un map como estructura de datos.*/
 
 function mostFrequentTopping(listOfPizzas){
-    //ham -> 2, cheese-> 1, basil->7 
+    //ham -> 2, cheese-> 1, basil->7
     let mapToppings = new Map();
     for(let pizza of listOfPizzas){
         //console.log(pizza);
@@ -140,7 +140,7 @@ function mostFrequentTopping(listOfPizzas){
 
 }
 
-console.log( mostFrequentTopping( [pedido1, pedido2, pedido3] ) ); 
+console.log( mostFrequentTopping( [pedido1, pedido2, pedido3] ) );
 
 //['cheese', 'ham', 'pork', 'pineapple', 'salami']
 function isVegetarian(arrayOfTopping){
